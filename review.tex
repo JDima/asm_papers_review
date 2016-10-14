@@ -1,0 +1,86 @@
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{Warsaw}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default}
+  \usepackage{beamerthemesplit}% or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{headline}{}
+  \AtBeginSection[]{
+    \begin{frame}
+    \vfill
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+      \usebeamerfont{title}\insertsectionhead\par%
+    \end{beamercolorbox}
+    \vfill
+    \end{frame}
+  }
+  \AtBeginSubsection[]{
+    \begin{frame}
+    \vfill
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+      \usebeamerfont{title}\insertsubsectionhead\par%
+    \end{beamercolorbox}
+    \vfill
+    \end{frame}
+  }
+}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\hypersetup{unicode=true}
+
+\title[Обзор литературы по ассембелрам]{Обзор литературы по ассембелрам}
+\author{Дмитрий Яковлев}
+\institute{EPAM Systems}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{План}
+\tableofcontents
+\end{frame}
+
+\section{Ввведение}
+\input{content/introduction}
+
+\section{Модель ошибки на данных BioNano}
+\input{content/error_model}
+
+\section{Ассемблеры}
+\subsection{OPTIMA}
+\input{content/optima}
+
+\subsection{OMBlast}
+\input{content/omblast}
+
+\subsection{MAligner}
+\input{content/maligner}
+
+\subsection{TWIN}
+\input{content/twin}
+
+\begin{frame}
+
+\begin{center}
+\Huge Спасибо за внимание!
+\end{center}
+
+\end{frame}
+
+\end{document}
