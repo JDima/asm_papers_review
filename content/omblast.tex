@@ -19,9 +19,15 @@
 
 \begin{frame}
 \frametitle{OMBlast: Поиск стартовых сидов - индексация}
+  Фрагмент $q$ на карте совпадает с фрагментом $r$ на референсе:
+  \begin{equation*}
+    r(1 - T_s) - T_m \le q \le r(1 + T_s) + T_m
+  \end{equation*}
+  $T_s$ - ошибка масштабирования \\
+  $T_m$ - ошибка измерений \\
   \begin{figure}
     \centering
-    \includegraphics[width = 0.9\textwidth]{omblast_index_A}
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_index_A}
   \end{figure}
 \end{frame}
 
@@ -29,23 +35,104 @@
 \frametitle{OMBlast: Поиск стартовых сидов - бины}
   \begin{figure}
     \centering
-    \includegraphics[width = 0.9\textwidth]{omblast_index_B}
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_index_B}
   \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{OMBlast: Расширение сидов}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_ext_seeds_1}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_ext_seeds_2}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Объединение выравниваний (1)}
+  Строится взвешенный ациклический граф:
+  \begin{itemize}
+    \item Вершины - выравненные разрезы
+    \item Рёбра - между двумя парами последовательно (на одной карте) выравненных разрезов
+    \item Веса - $t_m \, u_m - t_{es} \, u_{es} - t_{ms} \, u_{ms}$ \\
+    $u_{m}$ - количество совпадений\\
+    $u_{es}$ - количество лишних разрезов\\
+    $u_{ms}$ - количество пропущенных разрезов
+  \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_alg_mrg_0}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Объединение выравниваний (2)}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_alg_mrg_2}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_alg_mrg_3}
+  \end{figure}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{OMBlast: Объединение пересекающих выравниваний}
-
+\frametitle{OMBlast: Объединение выравниваний (3)}
+С помощью динамического программирования определяется путь в графе с наибольшим весом
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_alg_mrg_1}
+  \end{figure}
 
 \end{frame}
+
 
 \begin{frame}
 \frametitle{OMBlast: Построение итогового выравнивания}
 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Результаты - входные данные}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_data}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_error_levels}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Результаты - время работы}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{omblast/omblast_time}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Результаты - точность и полнота }
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth, height = 0.9\textheight]{omblast/omblast_error}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Результаты - наличие SV}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth, height = 0.9\textheight]{omblast/omblast_sv}
+  \end{figure}
 
 \end{frame}
