@@ -49,6 +49,26 @@ d_{avg} = \frac{\text{среднее расстояние до соседей}}{
 \end{frame}
 
 \begin{frame}
-\frametitle{Модель ошибок: лишние разрезы}
+\frametitle{Модель ошибок: лишние разрезы (1)}
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth, height = 0.6\textheight]{false_cut_error_loc}
+\end{figure}
+\begin{gather*}
+l_{fp} = \frac{\text{расстояние от лишнего разреза до конца карты}}{\text{длина оптической карты}} \\
+n_{fp} \sim 0.18\, Poisson(0) + 0.6 \, Poisson(1) + 0.22 \, Poisson(3)
+\end{gather*}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Модель ошибок: лишние разрезы (2)}
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth, height = 0.6\textheight]{false_cut_error}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth]{false_cut_solution}
+\end{figure}
 \end{frame}
