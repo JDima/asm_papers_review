@@ -21,7 +21,7 @@
   o_k \sim N(r_k, \sigma^2 \, r_k)
   \end{gather*}
   \centering
-  \includegraphics[width=.9\linewidth]{sigma_error_norm}
+  \includegraphics[width=.9\linewidth]{error_model/sigma_error_norm}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   Новый подход:
@@ -30,7 +30,7 @@
   s_k \sim Laplace(\mu, \beta)
   \end{gather*}
   \centering
-  \includegraphics[width=.9\linewidth]{sigma_error_laplace}
+  \includegraphics[width=.9\linewidth]{error_model/sigma_error_laplace}
 \end{minipage}
 \end{figure}
 \end{frame}
@@ -40,7 +40,7 @@
 Было замечено, что вероятность пропущенного разреза зависит от длины до соседних разрезов.
 \begin{figure}
   \centering
-  \includegraphics[width = 0.9\textwidth]{pc_error}
+  \includegraphics[width = 0.9\textwidth]{error_model/pc_error}
 \end{figure}
 \begin{gather*}
 p_c (d_{avg}) = \alpha_3 \, d_{avg}^3 + \alpha_2 \, d_{avg}^2 +  \alpha_1 \, d_{avg} + \alpha_0 \\
@@ -52,7 +52,7 @@ d_{avg} = \frac{\text{среднее расстояние до соседей}}{
 \frametitle{Модель ошибок: лишние разрезы (1)}
 \begin{figure}
   \centering
-  \includegraphics[width = 0.9\textwidth, height = 0.6\textheight]{false_cut_error_loc}
+  \includegraphics[width = 0.9\textwidth, height = 0.6\textheight]{error_model/false_cut_error_loc}
 \end{figure}
 \begin{gather*}
 l_{fp} = \frac{\text{расстояние от лишнего разреза до конца карты}}{\text{длина оптической карты}} \\
@@ -65,10 +65,10 @@ n_{fp} \sim 0.18\, Poisson(0) + 0.6 \, Poisson(1) + 0.22 \, Poisson(3)
 \frametitle{Модель ошибок: лишние разрезы (2)}
 \begin{figure}
   \centering
-  \includegraphics[width = 0.9\textwidth, height = 0.6\textheight]{false_cut_error}
+  \includegraphics[width = 0.9\textwidth, height = 0.6\textheight]{error_model/false_cut_error}
 \end{figure}
 \begin{figure}
   \centering
-  \includegraphics[width = 0.9\textwidth]{false_cut_solution}
+  \includegraphics[width = 0.9\textwidth]{error_model/false_cut_solution}
 \end{figure}
 \end{frame}
