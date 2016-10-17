@@ -4,6 +4,10 @@
 Два подхода:
 \begin{itemize}
   \item На основе алгоритма Смита-Ватермана (за основу взята статья Нагараяна)
+  \begin{enumerate}
+    \item Построение множества выравниваний на референс
+    \item Определение наилучшего с помощью M-Score
+  \end{enumerate}
   \item На основе индексации
 \end{itemize}
 \end{frame}
@@ -19,6 +23,23 @@ $S(q, r) = (\frac{q - r}{\sigma(r)})^2$
 $\sigma(r) = \max(\alpha \, r, \sigma_{min})$
 
 \end{frame}
+
+\begin{frame}
+\frametitle{MAligner: M-Score - значимость выравнивания}
+
+Предложена оценка M-Score для определения значимости выравнивания:
+
+\begin{gather*}
+  m_{\mathcal{A}} = \underset{A \in \mathcal{A}}{median}\{Score(A)\} \\
+  MAD_{\mathcal{A}} = \underset{A \in \mathcal{A}}{median}\{ | Score(A) - m_{\mathcal{A}}|\} \\
+  M-Score_{\mathcal{A}}(A) = \frac{Score(A) - m_{\mathcal{A}}}{MAD_{\mathcal{A}}}
+\end{gather*}
+
+$Score(A)$ - значение выравнивания $A$
+
+$\mathcal{A}$ - 100 лучших выравниваний по Score(A)
+\end{frame}
+
 
 \begin{frame}
 \frametitle{MAligner: Алгоритм на основе индексов}
