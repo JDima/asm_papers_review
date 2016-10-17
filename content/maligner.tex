@@ -11,6 +11,13 @@
 \begin{frame}
 \frametitle{MAligner: Алгоритм динамического программирования}
 
+
+$\text{Score(q, r, m, n)} = S(q, r) + C_q \,m + C_r \, n$
+
+$S(q, r) = (\frac{q - r}{\sigma(r)})^2$
+
+$\sigma(r) = \max(\alpha \, r, \sigma_{min})$
+
 \end{frame}
 
 \begin{frame}
