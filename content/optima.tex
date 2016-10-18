@@ -39,15 +39,22 @@
 Алгоритм поиска сидов для выравнивания:
 \begin{itemize}
   \item По референсу строятся композитные сиды и сортируются по первому элементу
-  \item У карты берётся произвольный сид, по которому будем искать множество подходящих(\ref{eq:feasible_match}) локаций в референсе
+  \item У карты берётся произвольный сид, по которому будем искать множество подходящих локаций(\ref{eq:feasible_match}) в референсе
   \item Бинарным поиском (по первому элементу) ищем множество подходящих сидов в референсе
   \item Далее линейно проверяем и оставляем только те, которые удовлетворяют (\ref{eq:feasible_match})
+  \item Таким образом получаем множество сидов на референсе, где карта может быть выравнена
+  \item Сложность алгоритма $O(m \, (log \, n + c \, \#seeds_{c=1}))$
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{OPTIMA: Парное выравнивание карты с референсом}
-
+После обнаружения схожих сидов на референсе происходит парное выравнивание алгоритмом динамического программирования:
+\begin{gather*}
+Score_{s,t} = \min\limits_{k \le s, l \le t} C_{ce} \, (s - k + t - l) + \chi_{k \dots s, l \dots t}^2 + Score_{k-1,l-1} \\
+\chi_{k \dots s, l \dots t}^2 = \frac{\bigg(\sum\limits_{i = k}^s o_i - \sum\limits_{j = l}^t r_i \bigg)^2}{\sum\limits_{j = l}^t\sigma_j^2}
+\end{gather*}
+$C_{se}$ - штраф за пропущенные фрагменты
 \end{frame}
 
 \begin{frame}
@@ -68,5 +75,25 @@ Z-score(a \in \mathcal{A}, f) = \frac{f_{a} - Mean(f_{\mathcal{A}})}{SD(f_{\math
 
 \begin{frame}
 \frametitle{OPTIMA: Объединение пересекающихся выравниваний}
+Ращбиение на блоки:
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth]{optima/extension}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{OPTIMA: Результаты}
+Результаты для 2100 карт:
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth]{optima/results}
+\end{figure}
+S - чувствительность \\
+P - точность \\
+tp - найстрока параметров в соотвествии с генерацией данных \\
+p - параметры, указанные в статьях авторов \\
+d - стандартные настройки \\
+t - обрезание концов карт \\
 
 \end{frame}
