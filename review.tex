@@ -40,6 +40,12 @@
 \usepackage{amsmath}
 \usepackage{dutchcal} %math symbols
 \usepackage{hyperref}
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{bibliography.bib}
+
+% Removes icon in bibliography
+\setbeamertemplate{bibliography item}{}
+
 \hypersetup{unicode=true}
 
 \title[Обзор литературы по ассембелрам]{Обзор литературы по ассембелрам}
@@ -81,14 +87,19 @@
 
 \section{Ссылки}
 \begin{frame}
-\frametitle{Исходники}
-В открытом доступе:
+\frametitle{Ссылки: исходники}
+В открытом доступе \nocite{*}:
 \begin{itemize}
   \item \href{http://www.cs.colostate.edu/twin/download.html}{TWIN}
   \item \href{https://github.com/verznet/OPTIMA}{OPTIMA}
   \item \href{https://github.com/LeeMendelowitz/maligner}{MAligner}
   \item \href{https://github.com/aldenleung/OMBlast}{OMBlast}
 \end{itemize}
+\end{frame}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{Ссылки: статьи}
+\printbibliography
 \end{frame}
 
 \begin{frame}
