@@ -1,9 +1,9 @@
 % !TEX root = ../review.tex
-\begin{frame}
-\frametitle{OPTIMA: Общие сведения}
+% \begin{frame}
+% \frametitle{OPTIMA: Общие сведения}
 
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
 \frametitle{OPTIMA: Алгоритм}
@@ -25,12 +25,14 @@
   \centering
   \includegraphics[width = 0.9\textwidth]{optima/composite_seeds}
 \end{figure}
-Множество фрагментов $o_k$, $o_{k + 1}$, $ \dots$, $o_{s}$ возможно
-совпадает с множеством фрагментов $r_l$, $r_{l+1}$, $\dots$, $r_{t}$ :
+\textbf{Определение.} \\
+Множество фрагментов $o_k$, $o_{k + 1}$, $ \dots$, $o_{s}$ \textbf{возможно
+совпадает} с множеством фрагментов $r_l$, $r_{l+1}$, $\dots$, $r_{t}$ :
 \begin{gather}
-\frac{\bigg|\sum\limits_{i = k}^s o_i - \sum\limits_{j = l}^t r_i \bigg|}{\sqrt{\sum\limits_{j = l}^t\sigma_j^2}} \le C_{\sigma}
+\frac{\bigg|\sum\limits_{i = k}^s o_i - \sum\limits_{j = l}^t r_j \bigg|}{\sqrt{\sum\limits_{j = l}^t \sigma_j^2}} \le C_{\sigma}
 \label{eq:feasible_match}
 \end{gather}
+где $C_{\sigma}$ - порог совпадения, $\sigma_j$ - стандартное отклонение $r_j$
 
 \end{frame}
 
@@ -39,11 +41,14 @@
 Алгоритм поиска сидов для выравнивания:
 \begin{itemize}
   \item По референсу строятся композитные сиды и сортируются по первому элементу
-  \item У карты берётся произвольный сид, по которому будем искать множество подходящих локаций(\ref{eq:feasible_match}) в референсе
+  \item У карты берётся сид, по которому будем искать множество подходящих локаций (\ref{eq:feasible_match}) в референсе
   \item Бинарным поиском (по первому элементу) ищем множество подходящих сидов в референсе
   \item Далее линейно проверяем и оставляем только те, которые удовлетворяют (\ref{eq:feasible_match})
   \item Таким образом получаем множество сидов на референсе, где карта может быть выравнена
-  \item Сложность алгоритма $O(m \, (log \, n + c \, \#seeds_{c=1}))$
+  \item Сложность алгоритма $O(m \, (log \, n + k \, \#seeds_{k=1}))$\\
+  $n$ и $m$ - количество фрагментов в референсе и карте \\
+  $k$ - длина k-tuple \\
+  $\#seeds_{k=1}$ - количество сидов найденных по первому элементу
 \end{itemize}
 \end{frame}
 
@@ -52,9 +57,9 @@
 После обнаружения схожих сидов на референсе происходит парное выравнивание алгоритмом динамического программирования:
 \begin{gather*}
 Score_{s,t} = \min\limits_{k \le s, l \le t} C_{ce} \, (s - k + t - l) + \chi_{k \dots s, l \dots t}^2 + Score_{k-1,l-1} \\
-\chi_{k \dots s, l \dots t}^2 = \frac{\bigg(\sum\limits_{i = k}^s o_i - \sum\limits_{j = l}^t r_i \bigg)^2}{\sum\limits_{j = l}^t\sigma_j^2}
+\chi_{k \dots s, l \dots t}^2 = \frac{\bigg(\sum\limits_{i = k}^s o_i - \sum\limits_{j = l}^t r_j \bigg)^2}{\sum\limits_{j = l}^t\sigma_j^2}
 \end{gather*}
-$C_{se}$ - штраф за пропущенные фрагменты
+$C_{se}$ - штраф за пропущенные разрезы
 \end{frame}
 
 \begin{frame}
@@ -74,13 +79,22 @@ Z-score(a \in \mathcal{A}, f) = \frac{f_{a} - Mean(f_{\mathcal{A}})}{SD(f_{\math
 \end{frame}
 
 \begin{frame}
-\frametitle{OPTIMA: Объединение пересекающихся выравниваний}
-Ращбиение на блоки:
+\frametitle{OPTIMA: Пример множества выравниваний}
 \begin{figure}
   \centering
-  \includegraphics[width = 0.9\textwidth]{optima/extension}
+  \includegraphics[width = 0.9\textwidth]{optima/cube}
 \end{figure}
 \end{frame}
+
+
+% \begin{frame}
+% \frametitle{OPTIMA: Объединение пересекающихся выравниваний}
+% Разбиение на блоки:
+% \begin{figure}
+%   \centering
+%   \includegraphics[width = 0.9\textwidth]{optima/extension}
+% \end{figure}
+% \end{frame}
 
 \begin{frame}
 \frametitle{OPTIMA: Результаты}
@@ -91,9 +105,20 @@ Z-score(a \in \mathcal{A}, f) = \frac{f_{a} - Mean(f_{\mathcal{A}})}{SD(f_{\math
 \end{figure}
 S - чувствительность \\
 P - точность \\
-tp - найстрока параметров в соотвествии с генерацией данных \\
+tp - настройка параметров в соответствии с генерацией данных \\
 p - параметры, указанные в статьях авторов \\
 d - стандартные настройки \\
 t - обрезание концов карт \\
+a - скорректированные на основе анализа организма
+\end{frame}
 
+\begin{frame}
+\frametitle{OPTIMA: Время работы}
+Ожидаемое время работы:
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth]{optima/time}
+\end{figure}
+Drosophila - 82000 карт \\
+Human - 2100000 карт
 \end{frame}
