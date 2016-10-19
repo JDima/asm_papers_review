@@ -1,15 +1,15 @@
 % !TEX root = ../review.tex
 \begin{frame}
-\frametitle{MAligner: Общие сведения}
+\frametitle{MAligner\nocite{maligner}: Общие сведения}
 Два подхода:
-\begin{itemize}
+\begin{enumerate}
   \item На основе алгоритма Смита-Ватермана
-  \begin{enumerate}
+  \begin{itemize}
     \item Построение множества выравниваний на референсе
-    \item Отклонение выравниваний с помощью M-Score
-  \end{enumerate}
+    \item Определение значимых выравниваний - M-Score
+  \end{itemize}
   \item На основе индексации
-\end{itemize}
+\end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -48,10 +48,30 @@ $\mathcal{A}$ - 100 лучших выравниваний по Score(A)
 
 \begin{frame}
 \frametitle{MAligner: Алгоритм на основе индексов}
-
+Работает в предположении, что в карте не могут быть пропущенные разрезы:
+\begin{enumerate}
+  \item Выбирается k и строятся всевозможные k-tuple на референсе длины меньше k - $\mathcal{K}$ и сортируем его по длине.
+  \item Далее строится по множеству $\mathcal{K}$ граф, где вершины - k-tuple, а рёбрами соединяем те k-tuple, у которых граничные разрезы совпадают.
+  \item У входной карты берём k-tuple и бинарным поиском по длине в $\mathcal{K}$ ищем схожие k-tuple.
+  \item Для каждого найденного k-tuple  запускаем поиск в ширину по графу, при чём идём только по тем вершинам, длины которых $C$ удовлетворяют очередному фрагменту карты длины $c_q$:
+  \begin{gather*}
+     c_q - max(\alpha \, c_q, \beta) \le C \le c_q + max(\alpha \, c_q, \beta)
+  \end{gather*}
+  \item Получаем набор выравниваний.
+\end{enumerate}
 \end{frame}
 
 \begin{frame}
 \frametitle{MAligner: Результаты}
+  Данные без ошибок:
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{maligner/without_errors}
+  \end{figure}
+  Данные с ошибками:
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{maligner/with_errors}
+  \end{figure}
 
 \end{frame}
