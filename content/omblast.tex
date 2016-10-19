@@ -11,7 +11,7 @@
 \begin{itemize}
   \item Поиск стартовых мест (сидов) для начала выравнивания
   \item Расширение сидов
-  \item Объединение пересекающих выравниваний
+  \item Объединение пересекающих выравниваний - построение частичных выравниваний
   \item Построение итогового выравнивания
 \end{itemize}
 
@@ -40,14 +40,22 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{OMBlast: Расширение сидов}
+\frametitle{OMBlast: Расширение сидов (1)}
   \begin{figure}
     \centering
     \includegraphics[width = 0.9\textwidth]{omblast/ext_seeds_1}
   \end{figure}
   \begin{figure}
     \centering
-    \includegraphics[width = 0.9\textwidth]{omblast/ext_seeds_2}
+    \includegraphics[width = 0.9\textwidth, height = 0.4\textheight]{omblast/ext_seeds_2}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Расширение сидов (2)}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth, height = 0.9\textheight]{omblast/dp_matrix}
   \end{figure}
 \end{frame}
 
@@ -93,9 +101,39 @@
 
 
 \begin{frame}
-\frametitle{OMBlast: Построение итогового выравнивания}
+\frametitle{OMBlast: Построение итогового выравнивания(1)}
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth]{omblast/graph_problem}
+\end{figure}
 
+\end{frame}
 
+\begin{frame}
+\frametitle{OMBlast: Построение итогового выравнивания(2)}
+Имеются два частичных выравнивания:
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9\textwidth]{omblast/trimming}
+\end{figure}
+После получаем итоговое выравнивание, для которого можно посчитать значимость
+\end{frame}
+
+\begin{frame}
+\frametitle{OMBlast: Значимость выравнивания}
+Значение выравнивания:
+\begin{gather*}
+  score = \sum\limits_{i=1}^q p_i - \sum\limits_{i=1}^{q - 1} r_{i,i+1} \\
+  p_i = (t_m \, u_m - t_{es} \, u_{es} - t_{ms} \, u_{ms}) (1 - |1 - s|)
+\end{gather*}
+$p_i$ - частичное выравнивание \\
+$t_m, t_{es}, t_{ms}$ - параметры баллов за совпадений, лишний и пропущенный разрез \\
+$u_m, u_{es}, u_{ms}$ - количество совпадений, лишних и пропущенных \\
+$s$ - масштаб \\
+Значимость выравнивания:
+\begin{gather*}
+  u_i = \frac{score_i - score_{min}}{\sum\limits_{j} (score_j - score _{min} + 1)}
+\end{gather*}
 \end{frame}
 
 \begin{frame}
@@ -132,7 +170,7 @@
 \frametitle{OMBlast: Вывод }
 Плюсы:
 \begin{itemize}
-  \item 
+  \item Определение SV
 \end{itemize}
 Минусы:
 \begin{itemize}
