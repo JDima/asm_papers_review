@@ -89,8 +89,31 @@
 \section{Алайнеры}
 
 \begin{frame}
-\frametitle{Общие сведения: классификация алайнеров}
+\frametitle{Общие сведения}
+Классификация алайнеров:
+\begin{itemize}
+  \item Использование матрицы выравнивания (алгоритм Смита-Ватермана)
+  \item По наличию хешинга
+  \item Модель ошибки
+\end{itemize}
+Общая сехама:
+\begin{enumerate}
+  \item Определение мест на референсе, куда карта может быть выравнена (этап хешинга)
+  \item Построение выравнивания с использованием матрицы выравнивания
+  \item Определение значимости выравнивания
+  \item Выбор лучшего выравнивания
+\end{enumerate}
+\end{frame}
 
+\begin{frame}
+\frametitle{Общие сведения: ранее известные алайнеры}
+\begin{itemize}
+  \item \textbf{SOMA\nocite{SOMA}} \\
+  Аналогичен OPTIMA
+  \item \textbf{Gentig} \\
+  \item \textbf{Valouev} \\
+  На основе максимизации функции макссимального правдоподобия
+\end{itemize}
 \end{frame}
 
 \subsection{OPTIMA}
