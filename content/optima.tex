@@ -66,14 +66,14 @@ $C_{se}$ - штраф за пропущенные разрезы
 \frametitle{OPTIMA: Определение значимости выравнивания}
 Пусть $a$ - выравнивание из множества выравниваний $\mathcal{A}$
 \begin{gather*}
-Z-score(a \in \mathcal{A}, f) = \frac{f_{a} - Mean(f_{\mathcal{A}})}{SD(f_{\mathcal{A}})}
+Z_{score}(a \in \mathcal{A}, f) = \frac{f_{a} - Mean(f_{\mathcal{A}})}{SD(f_{\mathcal{A}})}
 \end{gather*}
 где $f$ - характеристика выравнивания.\\
  Тогда статистическая значимость выравнивания:
 \begin{align*}
-  \vartheta (a \in \mathcal{A}) = Z-score( & -Z-score(a, \#matches) \\
-  & + Z-score(a, \#cuterrors) \\
-  & + Z-score(a, WHT(\chi^2, \#matches))) \\
+  \vartheta (a \in \mathcal{A}) = Z_{score}( & -Z_{score}(a, \#matches) \\
+  & + Z_{score}(a, \#cuterrors) \\
+  & + Z_{score}(a, WHT(\chi^2, \#matches))) \\
 \end{align*}
 \[\text{где } WHT(\chi^2, \#matches) = \frac{\sqrt[3]{\frac{\chi^2}{\#matches}} - \big(1 - \frac{1}{9} \frac{2}{\#matches}\big)}{\sqrt{\frac{1}{9} \frac{2}{\#matches}}}\]
 \end{frame}
